@@ -14,25 +14,25 @@ class NucleoLibreria
         spl_autoload_register(function ($clase) {
             if (substr($clase, -6) == 'Modelo') {
 
-                require_once($this->prefijo . 'modelos/' . $clase . ".php");
+                require_once($this->prefijo . 'modelo/' . $clase . ".php");
             } else if (substr($clase, -8) == 'Libreria') {
-                require_once($this->prefijo . './librerias/' . $clase . ".php");
+                require_once($this->prefijo . './libreria/' . $clase . ".php");
             } else {
-                require_once($this->prefijo . './controladores/' . $clase . ".php");
+                require_once($this->prefijo . './controlador/' . $clase . ".php");
             }
         });
         $this->getControlador();
     }
     public function getControlador()
     {
-        $controlador = "Inicio";
+        $controlador = "Ingreso";
         $metodo = "inicio";
         $parametros = "";
         if (isset($_GET['url'])) {
             $url = trim($_GET['url']);
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode("/", $url);
-            if (file_exists("./controladores/" . ucwords($url[0]) . ".php")) {
+            if (file_exists("./controlador/" . ucwords($url[0]) . ".php")) {
                 $controlador = ucwords($url[0]);
                 $controlador = new $controlador;
                 if (isset($url[1]) && !empty(trim($url[1]))) {
@@ -50,9 +50,9 @@ class NucleoLibreria
             }
         }
         session_start();
-        $plantilla = new Plantilla;
         $controlador = new $controlador;
         $controlador->{$metodo}($parametros);
-        include_once "vistas/Plantilla.php";
+        $plantilla = new Plantilla;
+        include_once "vista/" . $plantilla->getAtributo("vista");
     }
 }

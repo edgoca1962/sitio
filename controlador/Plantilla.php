@@ -20,6 +20,7 @@ class Plantilla extends PlantillaModelo
    public function __construct()
    {
       parent::__construct();
+      $this->vista = get_class($this) . ".php";
    }
    public function inicio($parametros = null)
    {
