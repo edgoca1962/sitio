@@ -15,7 +15,7 @@ if (form) {
           datos.append("id_formulario", idFrm);
           datos.append("id_boton", idBtn);
           datos.append("nuevoArchivo", srcEncoded);
-          fetch("./librerias/Jscript.php", {
+          fetch("./libreria/Jscript.php", {
             method: "POST",
             body: datos,
           })
