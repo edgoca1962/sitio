@@ -35,4 +35,5 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
    </button>
+   <div><?= $controlador->getAtributo("alerta") ?></div>
 </div>

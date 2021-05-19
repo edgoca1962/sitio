@@ -2,10 +2,20 @@
 class PlantillaModelo extends BaseLibreria
 {
    private $id;
-   private $titulo;
+   private $logo;
    private $icono;
-   private $logotipo;
-   private $rutas_proyecto;
+   private $titulo;
+   private $descripcion;
+   private $palabrasClave;
+   private $rutaDominio;
+   private $rutaContenidos;
+   private $rutaCss;
+   private $rutaJs;
+   private $rutaImgBanners;
+   private $rutaImgGenerales;
+   private $rutaImgUsrs;
+   private $rutaPlugins;
+   private $resultado;
    private $consultas;
    private $datos_consulta;
    protected function __construct()
@@ -27,12 +37,12 @@ class PlantillaModelo extends BaseLibreria
       );
       $this->consultas->bindParam(':id', $this->id, PDO::PARAM_STR);
       if ($this->consultas->execute()) {
-         $this->conexion = null;
-         return true;
+         $this->resultado = true;
       } else {
-         $this->conexion = null;
-         return false;
+         $this->resultado =  false;
       }
+      $this->conexion = null;
+      return $this->resultado;
    }
    protected function eliminar_registro_modelo()
    {
@@ -43,11 +53,12 @@ class PlantillaModelo extends BaseLibreria
       $this->consultas->bindParam(':id', $this->id, PDO::PARAM_STR);
       if ($this->consultas->execute()) {
          $this->conexion = null;
-         return true;
+         $this->resultado = true;
       } else {
-         $this->conexion = null;
-         return false;
+         $this->resultado =  false;
       }
+      $this->conexion = null;
+      return $this->resultado;
    }
    protected function modifica_registro_modelo()
    {
@@ -57,11 +68,32 @@ class PlantillaModelo extends BaseLibreria
       );
       $this->consultas->bindParam(':id', $this->id, PDO::PARAM_STR);
       if ($this->consultas->execute()) {
-         $this->conexion = null;
-         return true;
+         $this->resultado = true;
       } else {
-         $this->conexion = null;
-         return false;
+         $this->resultado =  false;
       }
+      $this->conexion = null;
+      return $this->resultado;
+   }
+   protected function getRutasModelo()
+   {
+      $this->rutaDominio = "http://localhost/sitio/";
+      $this->rutaContenidos = "vista/contenidos/";
+      $this->rutaCss = $this->rutaDominio . "vista/css/";
+      $this->rutaJs = $this->rutaDominio . "vista/js/";
+      $this->rutaImgBanners = $this->rutaDominio . "vista/img/banners/";
+      $this->rutaImgGenerales = $this->rutaDominio . "vista/img/generales/";
+      $this->rutaImgUsrs = $this->rutaDominio . "vista/img/Usrs/";
+      $this->rutaPlugins = $this->rutaDominio . "vista/plugins/";
+      return true;
+   }
+   protected function getElementosModelo()
+   {
+      $this->logo = "";
+      $this->icono = "";
+      $this->titulo = "Sitio";
+      $this->descripcion = "Este es un sitio para la administración de contenidos.";
+      $this->palabrasClave = "CMS,Administración,Contenido,Management,Content";
+      return true;
    }
 }
