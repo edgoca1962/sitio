@@ -19,7 +19,7 @@ class PlantillaModelo extends BaseLibreria
    {
       $this->$atributo = $valor;
    }
-   protected function insertarRegistroModelo()
+   protected function insertar_registro_modelo()
    {
       $this->id = $this->getAtributoModelo('id');
       $this->consultas = $this->conectar()->prepare(
@@ -34,7 +34,7 @@ class PlantillaModelo extends BaseLibreria
          return false;
       }
    }
-   protected function eliminarRegistroModelo()
+   protected function eliminar_registro_modelo()
    {
       $this->id = $this->getAtributoModelo('id');
       $this->consultas = $this->conectar()->prepare(
@@ -49,7 +49,7 @@ class PlantillaModelo extends BaseLibreria
          return false;
       }
    }
-   protected function modificaRegistroModelo()
+   protected function modifica_registro_modelo()
    {
       $this->id = $this->getAtributoModelo('id');
       $this->consultas = $this->conectar()->prepare(
@@ -63,24 +63,5 @@ class PlantillaModelo extends BaseLibreria
          $this->conexion = null;
          return false;
       }
-   }
-   protected function getRutasModelo()
-   {
-      $this->rutaDominio = "http://localhost/sitio/";
-      $this->rutaContenidos = "vista/contenidos/";
-      $this->rutaCss = $this->rutaDominio . "vista/css/";
-      $this->rutaJs = $this->rutaDominio . "vista/js/";
-      $this->rutaImgBanners = $this->rutaDominio . "vista/img/banners/";
-      $this->rutaImgGenerales = $this->rutaDominio . "vista/img/generales/";
-      $this->rutaImgUsrs = $this->rutaDominio . "vista/img/Usrs/";
-      $this->rutaPlugins = $this->rutaDominio . "vista/plugins/";
-      return true;
-   }
-   protected function getElementosModelo()
-   {
-      $this->logo = "";
-      $this->icono = "";
-      $this->titulo = "Sitio";
-      return true;
    }
 }

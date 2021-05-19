@@ -1,27 +1,27 @@
 <?php
 class Inicio extends InicioModelo
 {
+   private $componente;
+   private $palabras_claves;
+   private $descripcion;
+   private $titulo;
+   private $datos_palabras_claves;
+   private $datos_componentes;
    private $id_sesion;
    private $nombre_usuario;
    private $foto_usuario;
-   private $palabrasClave;
-   private $descripcion;
-   private $titulo;
+   private $elementos;
+   private $rutas;
+   private $ruta_dominio;
    private $sesion;
    private $vista;
-
    public function __construct()
    {
       parent::__construct();
       $this->vista = get_class($this) . ".php";
    }
-   public function inicio($parametros = null)
+   public function inicio($parametros)
    {
-      if ($this->getElementos()) {
-         return true;
-      } else {
-         return false;
-      }
    }
    public function getAtributo($atributo)
    {
@@ -30,16 +30,5 @@ class Inicio extends InicioModelo
    public function setAtributo($atributo, $valor)
    {
       $this->$atributo = $valor;
-   }
-   public function getElementos()
-   {
-      if ($this->getElementosModelo()) {
-         $this->titulo = $this->getAtributoModelo("Inicio");
-         $this->descripcion = $this->getAtributoModelo("descripcion");
-         $this->palabrasClave = $this->getAtributoModelo("palabrasClave");
-         return true;
-      } else {
-         return false;
-      }
    }
 }

@@ -2,7 +2,8 @@
 class InicioModelo extends BaseLibreria
 {
    private $vista;
-   private $palabrasClave;
+   private $componente;
+   private $palabras_clave;
    private $descripcion;
    private $titulo;
    private $consultas;
@@ -19,11 +20,7 @@ class InicioModelo extends BaseLibreria
    {
       $this->$atributo = $valor;
    }
-   protected function getElementosModelo()
+   protected function get_datos_modelo()
    {
-      $this->titulo = "Inicio";
-      $this->descripcion = "Este es un sitio para la administración de contenidos.";
-      $this->palabrasClave = "CMS,Administración,Contenido,Management,Content";
-      return true;
    }
 }
