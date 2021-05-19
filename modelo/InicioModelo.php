@@ -1,13 +1,9 @@
 <?php
 class InicioModelo extends BaseLibreria
 {
-   private $vista;
-   private $componente;
-   private $palabras_clave;
    private $descripcion;
+   private $palabrasClave;
    private $titulo;
-   private $consultas;
-   private $datos_consulta;
 
    protected function __construct()
    {
@@ -20,7 +16,11 @@ class InicioModelo extends BaseLibreria
    {
       $this->$atributo = $valor;
    }
-   protected function get_datos_modelo()
+   protected function getElementosModelo()
    {
+      $this->descripcion = "Esta es la descripción de la página de inicio";
+      $this->palabrasClave = "sitio,CMS,Content,Management,System,Sistema,Administración,Contenido";
+      $this->titulo = " | " . "Inicio";
+      return true;
    }
 }
