@@ -11,13 +11,9 @@ class Inicio extends InicioModelo
       parent::__construct();
       $this->vista = get_class($this) . ".php";
    }
-   public function inicio($parametros)
+   public function inicio($parametros = null)
    {
-      if ($this->getElementos()) {
-         return true;
-      } else {
-         return false;
-      }
+      $this->getElementos();
    }
    public function getAtributo($atributo)
    {

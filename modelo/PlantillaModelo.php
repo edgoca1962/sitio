@@ -1,6 +1,7 @@
 <?php
 class PlantillaModelo extends BaseLibreria
 {
+   private $id;
    private $titulo;
    private $icono;
    private $logo;

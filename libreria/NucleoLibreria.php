@@ -25,7 +25,7 @@ class NucleoLibreria
     }
     public function getControlador()
     {
-        $controlador = "Inicio";
+        $controladorNombre = "Inicio";
         $metodo = "inicio";
         $parametros = "";
         if (isset($_GET['url'])) {
@@ -33,8 +33,8 @@ class NucleoLibreria
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode("/", $url);
             if (file_exists("./controlador/" . ucwords($url[0]) . ".php")) {
-                $controlador = ucwords($url[0]);
-                $controlador = new $controlador;
+                $controladorNombre = ucwords($url[0]);
+                $controlador = new $controladorNombre;
                 if (isset($url[1]) && !empty(trim($url[1]))) {
                     if (method_exists($controlador, $url[1])) {
                         $metodo = $url[1];
@@ -50,9 +50,9 @@ class NucleoLibreria
             }
         }
         session_start();
-        $plantilla = new Plantilla();
-        $controlador = new $controlador;
+        $controlador = new $controladorNombre;
         $controlador->{$metodo}($parametros);
+        $plantilla = new Plantilla();
         include_once "vista/" . $plantilla->getAtributo("vista");
     }
 }
