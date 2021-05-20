@@ -1,13 +1,11 @@
 <?php
 class PlantillaModelo extends BaseLibreria
 {
-   private $id;
    private $titulo;
    private $icono;
-   private $logotipo;
-   private $rutas_proyecto;
+   private $logo;
    private $consultas;
-   private $datos_consulta;
+
    protected function __construct()
    {
    }
@@ -63,5 +61,12 @@ class PlantillaModelo extends BaseLibreria
          $this->conexion = null;
          return false;
       }
+   }
+   protected function getElementosModelo()
+   {
+      $this->titulo = "Sitio";
+      $this->icono = "";
+      $this->logo = "";
+      return true;
    }
 }

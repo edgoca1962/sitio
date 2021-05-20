@@ -50,9 +50,9 @@ class NucleoLibreria
             }
         }
         session_start();
-        $plantilla = new Plantilla;
+        $plantilla = new Plantilla();
         $controlador = new $controlador;
         $controlador->{$metodo}($parametros);
-        include_once "vista/Plantilla.php";
+        include_once "vista/" . $plantilla->getAtributo("vista");
     }
 }
