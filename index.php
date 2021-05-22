@@ -1,3 +1,3 @@
 <?php
 require_once "libreria/NucleoLibreria.php";
-$nucleo = new NucleoLibreria;
+$nucleo = new NucleoLibreria();

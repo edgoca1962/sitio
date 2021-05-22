@@ -50,7 +50,7 @@ class NucleoLibreria
             }
         }
         session_start();
-        $controlador = new $controladorNombre;
+        $controlador = new $controladorNombre();
         $controlador->{$metodo}($parametros);
         $plantilla = new Plantilla();
         include_once "vista/" . $plantilla->getAtributo("vista");

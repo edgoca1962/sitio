@@ -1,10 +1,20 @@
 <?php
+
+declare(strict_types=1);
 class PlantillaModelo extends BaseLibreria
 {
-   private $id;
-   private $titulo;
-   private $icono;
-   private $logo;
+   private int $id;
+   private string $titulo;
+   private string $icono;
+   private string $logo;
+   private string $rutaDominio;
+   private string $rutaContenidos;
+   private string $rutaCss;
+   private string $rutaJs;
+   private string $rutaImgBanners;
+   private string $rutaImgGenerales;
+   private string $rutaImgUsrs;
+   private string $rutaPlugins;
    private $consultas;
 
    protected function __construct()
@@ -18,7 +28,7 @@ class PlantillaModelo extends BaseLibreria
    {
       $this->$atributo = $valor;
    }
-   protected function insertar_registro_modelo()
+   protected function insertarRegistroModelo(): bool
    {
       $this->id = $this->getAtributoModelo('id');
       $this->consultas = $this->conectar()->prepare(
@@ -33,7 +43,7 @@ class PlantillaModelo extends BaseLibreria
          return false;
       }
    }
-   protected function eliminar_registro_modelo()
+   protected function eliminarRegistroModelo(): bool
    {
       $this->id = $this->getAtributoModelo('id');
       $this->consultas = $this->conectar()->prepare(
@@ -48,7 +58,7 @@ class PlantillaModelo extends BaseLibreria
          return false;
       }
    }
-   protected function modifica_registro_modelo()
+   protected function modificaRegistroModelo(): bool
    {
       $this->id = $this->getAtributoModelo('id');
       $this->consultas = $this->conectar()->prepare(
@@ -63,11 +73,27 @@ class PlantillaModelo extends BaseLibreria
          return false;
       }
    }
-   protected function getElementosModelo()
+   protected function getElementosModelo(): bool
    {
       $this->titulo = "Sitio";
       $this->icono = "";
       $this->logo = "";
+      return true;
+   }
+   protected function getRutasModelo(): bool
+   {
+      /**
+       * Aquí debe llevarse a cabo una consulta a la
+       * base de datos para obtener la información
+       */
+      $this->rutaDominio = "http://localhost/sitio/";
+      $this->rutaContenidos = $this->rutaDominio . "vista/contenidos/";
+      $this->rutaCss = $this->rutaDominio . "vista/css/";
+      $this->rutaJs = $this->rutaDominio . "vista/js/";
+      $this->rutaImgBanners = $this->rutaDominio . "vista/img/banners/";
+      $this->rutaImgGenerales = $this->rutaDominio . "vista/img/generales/";
+      $this->rutaImgUsrs = $this->rutaDominio . "vista/img/usrs/";
+      $this->rutaPlugins = $this->rutaDominio . "vista/img/plugins/";
       return true;
    }
 }

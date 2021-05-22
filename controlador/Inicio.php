@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 class Inicio extends InicioModelo
 {
-   private $vista;
-   private $descripcion;
-   private $palabrasClave;
-   private $titulo;
+   private string $vista;
+   private string $descripcion;
+   private string $palabrasClave;
+   private string $titulo;
+   private array $carrusel;
 
    public function __construct()
    {
@@ -23,12 +26,13 @@ class Inicio extends InicioModelo
    {
       $this->$atributo = $valor;
    }
-   public function getElementos()
+   public function getElementos(): bool
    {
       if ($this->getElementosModelo()) {
          $this->descripcion = $this->getAtributoModelo("descripcion");
          $this->palabrasClave = $this->getAtributoModelo("palabrasClave");
          $this->titulo = $this->getAtributoModelo("titulo");
+         $this->carrusel = $this->getAtributoModelo("carrusel");
          return true;
       } else {
          return false;
